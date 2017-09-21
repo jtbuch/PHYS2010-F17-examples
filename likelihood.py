@@ -49,7 +49,7 @@ equation_plaw = 'y =' + str(round(result_plaw.x[0], 4)) + '*' + 'x^' + str(round
 #print the results as a sanity check!
 #print result_plaw.x
 
-#plotting routine
+#plotting routine   #substitute _lin for _plaw to obtain plot for linear model
 fig, ax = plt.subplots(1,1)
 plt.plot(x, result_plaw.x[0]*pow(x, result_plaw.x[1]), lw=2, color='black', label = 'best-fit')
 plt.errorbar(x, data, yerr=err, fmt='o')
@@ -58,4 +58,4 @@ plt.suptitle("MLE: Maximum Likelihood Estimation")
 ax.text(0.5, 0.9, equation_plaw, horizontalalignment='center', verticalalignment='center', transform=ax.transAxes)
 plt.legend(loc='upper left', prop={'size':12}, frameon=False)
 #plt.show()
-plt.savefig(outfilepath + 'powerlawfit.pdf')
+plt.savefig(outfilepath + 'powerlawfit.pdf')   #'linearfit.pdf'

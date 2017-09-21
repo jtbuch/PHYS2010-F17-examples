@@ -7,7 +7,7 @@ linear and power law models by minimizing the log-likelihood of a normal probabi
 
 * The code is open-source, so feel free to modify, share, and improve!
 
-GitHub is a cool way to organize and archive code. Here are some tutorials that may help you get started:
+GitHub is a cool way to organize and archive code. Here are some tutorials that will help you get started:
 
 https://guides.github.com/activities/hello-world/
 

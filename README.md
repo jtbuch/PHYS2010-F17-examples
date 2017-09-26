@@ -5,6 +5,9 @@ This is a repository for sample codes that may be useful in data analysis for PH
 * [likelihood.py](https://github.com/user/repo/PHYS2010-F17-examples/likelihood.py) calculates the best-fit parameters for
 linear and power law models by minimizing the log-likelihood of a normal probability density function (PDF).
 
+* [ratio_test.py](https://github.com/user/repo/PHYS2010-F17-examples/ratio_test.py) implements the Wilks ratio test for 
+comparing two competing models by calculating the log of the ratio of their likelihoods and the corresponding p-value.
+
 * The code is open-source, so feel free to modify, share, and improve!
 
 GitHub is a cool way to organize and archive code. Here are some tutorials that will help you get started:

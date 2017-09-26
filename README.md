@@ -8,7 +8,7 @@ linear and power law models by minimizing the log-likelihood of a normal probabi
 * [ratio_test.py](https://github.com/user/repo/PHYS2010-F17-examples/ratio_test.py) implements the Wilks ratio test for 
 comparing two competing models by calculating the log of the ratio of their likelihoods and the corresponding p-value.
 
-* The code is open-source, so feel free to modify, share, and improve!
+* The code is open-source under the [MIT License](https://github.com/jtbuch/PHYS2010-F17-examples/blob/master/LICENSE), so feel free to modify, share, and improve! 
 
 GitHub is a cool way to organize and archive code. Here are some tutorials that will help you get started:
 

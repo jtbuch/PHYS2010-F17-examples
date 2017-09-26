@@ -21,56 +21,29 @@ data = [9.9078, 3.1797, 17.9771, 28.0620, 35.3188, 59.4874, 69.7478, 95.4985, 11
 err_std  = [10 * np.ones(len(data))[i] for i in range(len(data))]   #for plotting error bars
 err_large = [14 * np.ones(len(data))[i] for i in range(len(data))]
 
-#likelihood function for a linear fit model: y = m*x + c  (not used in this analysis)
-def neg_loglhood_lin(params):
-    c, m, stdev = params
-
-    # Calculate the predicted values from the initial parameter guesses
-    ymod = c + m*x
-    log_lik_lin = -np.sum(stats.norm.logpdf(data, loc=ymod, scale=stdev) )
-    return(log_lik_lin)
-
-#likelihood function for a power law fit model: y = a*x^b  (not used in this analysis)
-def neg_loglhood_plaw(params):
-    a, b, stdev = params
-
-    ymod = a*pow(x, b)
-    log_lik_plaw = -np.sum(stats.norm.logpdf(data, loc=ymod, scale=stdev) )
-    return(log_lik_plaw)
-
 def neg_loglhood_lin_2d(params):
-    m, stdev = params
+    m, stdev= params
 
     ymod = m*x
     log_lik_lin = -np.sum(stats.norm.logpdf(data, loc=ymod, scale=stdev) )
     return(log_lik_lin)
 
 def neg_loglhood_parabolic(params):
-    a, stdev = params
+    a, stdev= params
 
     ymod = a*pow(x, 2)
     log_lik_plaw = -np.sum(stats.norm.logpdf(data, loc=ymod, scale=stdev) )
     return(log_lik_plaw)
 
-#Wilkes test statistic 
-def test_stat(x, y):
-    return -2*(x-y)   #where x and y is the ratio of log-likelihoods; y-> null model
-
 #initial parameter guesses    
-init_params_3d = [1, 1, 1]
 init_params_2d = [1, 1]
 
 #minimize the log likelihood or equivalently maximize the likelihood
-# result_lin = minimize(neg_loglhood_lin, init_params_3d, method='nelder-mead')
-# equation_lin = 'y =' + str(round(result_lin.x[0], 4)) + '+' + str(round(result_lin.x[1], 4)) + 'x'
-# result_plaw = minimize(neg_loglhood_plaw, init_params_3d, method='nelder-mead')
-# equation_plaw = 'y =' + str(round(result_plaw.x[0], 4)) + '*' + 'x^' + str(round(result_plaw.x[1], 4))
+result_parabolic = minimize(neg_loglhood_parabolic, init_params_2d, method='nelder-mead')
+equation_parabolic = 'y =' + str(round(result_parabolic.x[0], 4)) + '*' + 'x^2' 
 
 result_lin_2d = minimize(neg_loglhood_lin_2d, init_params_2d, method='nelder-mead')
 equation_lin_2d = 'y =' + str(round(result_lin_2d.x[0], 4)) + '*' + 'x'
-
-result_parabolic = minimize(neg_loglhood_parabolic, init_params_2d, method='nelder-mead')
-equation_parabolic = 'y =' + str(round(result_parabolic.x[0], 4)) + '*' + 'x^2' 
 
 #print the results as a sanity check!
 #print result_parabolic.x
@@ -78,17 +51,12 @@ equation_parabolic = 'y =' + str(round(result_parabolic.x[0], 4)) + '*' + 'x^2'
 #plotting routine   #substitute _lin for _plaw to obtain plot for linear model
 fig, ax = plt.subplots(1,1)
 plt.plot(x, result_parabolic.x[0]*pow(x,2), lw=2, color='black', label = 'best-fit') #result_lin_2d.x[0]*x #result_parabolic.x[0]*pow(x,2) #result_plaw.x[0]*pow(x, result_plaw.x[1]
-plt.errorbar(x, data, yerr=err_large, color='red', fmt='o')
+plt.errorbar(x, data, yerr=err_std, color='red', fmt='o')
 plt.xlim(-1, 11)
 plt.suptitle("MLE: Maximum Likelihood Estimation (v3)")
 ax.text(0.5, 0.9, equation_parabolic, horizontalalignment='center', verticalalignment='center', transform=ax.transAxes) #equation_lin_2d #equation_parabolic 
 plt.legend(loc='upper left', prop={'size':12}, frameon=False)
-plt.savefig(outfilepath + 'parabolic_largeerror.pdf')   #'linearfit.pdf' #'parabolicfit.pdf'
-
-#Wilkes test statistic to compare models, only applicable when the degrees of freedom (d.o.f) of the alternate model are higher than the null model
-# D = test_stat(neg_loglhood_parabolic(result_parabolic.x), neg_loglhood_lin_2d(result_lin_2d.x))  
-# pval = chi2.sf(D, 1)
-# print pval
+plt.savefig(outfilepath + 'parabolicfit.pdf')   #'linearfit.pdf' #'parabolicfit.pdf'
 
 #plotting log-likelihood variations for linear model
 a_lin = np.arange(12, 18, 0.01)

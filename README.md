@@ -2,11 +2,9 @@
 
 This is a repository for sample codes that may be useful in data analysis for PHYS2010 experiments. 
 
-* [likelihood.py](https://github.com/user/repo/PHYS2010-F17-examples/likelihood.py) calculates the best-fit parameters for
-linear and power law models by minimizing the log-likelihood of a normal probability density function (PDF).
+* [likelihood.py](https://github.com/jtbuch/PHYS2010-F17-examples/blob/master/likelihood.py) calculates the best-fit parameters for linear and power law models by minimizing the log-likelihood of a normal probability density function (PDF).
 
-* [ratio_test.py](https://github.com/user/repo/PHYS2010-F17-examples/ratio_test.py) implements the Wilks ratio test for 
-comparing two competing models by calculating the log of the ratio of their likelihoods and the corresponding p-value.
+* [ratio_test.py](https://github.com/jtbuch/PHYS2010-F17-examples/blob/master/ratio_test.py) implements the Wilks ratio test for comparing two competing models by calculating the log of the ratio of their likelihoods and the corresponding p-value.
 
 * [muon_jupyter.ipynb](http://nbviewer.jupyter.org/github/jtbuch/PHYS2010-F17-examples/blob/master/muon_jupyter.ipynb) is the 
 Jupyter notebook for the simulated muon decay experiment (powered by [nbviewer](http://nbviewer.jupyter.org/)).
